@@ -6,12 +6,38 @@
     //Se o usuário for "Programador" e trabalhar até 8 horas diárias (inclusive), o programa deverá informar quanto recebe por hora.
     //Se o usuário for "Programador" e trabalhar mais que 8 horas diárias, o programa deverá calcular um adicional de 30% (30/100) na sua remuneração. Apresente também quanto recebe por hora, já com o adicional previsto.
 
-    //ENTRADA
+    const remuneracaoMensal = parseFloat(prompt("Informe sua remuneração mensal:"));
+const cargo = prompt("Informe o cargo que você ocupa:");
+const horasTrabalhadas = parseFloat(prompt("Informe quantas horas você trabalha por dia:"));
 
+const diasTrabalhadosNoMes = 20;
+const horasDiariasEstagiario = 6;
+const horasDiariasProgramador = 8;
+const adicionalEstagiario = 0.5;
+const adicionalProgramador = 0.3;
 
-    //PROCESSAMENTO
+let valorHora = 0;
 
-
-    //SAÍDA
+if (cargo === "Estagiário") {
+  if (horasTrabalhadas <= horasDiariasEstagiario) {
+    valorHora = remuneracaoMensal / (diasTrabalhadosNoMes * horasTrabalhadas);
+    alert(`Você recebe ${valorHora.toFixed(2)} por hora.`);
+  } else {
+    const remuneracaoAdicional = remuneracaoMensal + (remuneracaoMensal * adicionalEstagiario);
+    valorHora = remuneracaoAdicional / (diasTrabalhadosNoMes * horasTrabalhadas);
+    alert(`Você precisa ser contratado! Você recebe ${valorHora.toFixed(2)} por hora, incluindo o adicional.`);
+  }
+} else if (cargo === "Programador") {
+  if (horasTrabalhadas <= horasDiariasProgramador) {
+    valorHora = remuneracaoMensal / (diasTrabalhadosNoMes * horasTrabalhadas);
+    alert(`Você recebe ${valorHora.toFixed(2)} por hora.`);
+  } else {
+    const remuneracaoAdicional = remuneracaoMensal + (remuneracaoMensal * adicionalProgramador);
+    valorHora = remuneracaoAdicional / (diasTrabalhadosNoMes * horasTrabalhadas);
+    alert(`Você recebe ${valorHora.toFixed(2)} por hora, incluindo o adicional.`);
+  }
+} else {
+  alert("Cargo não reconhecido. Por favor, tente novamente.");
+}
 
 </script>

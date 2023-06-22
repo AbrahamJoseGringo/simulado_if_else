@@ -8,13 +8,42 @@
     Apresente em tela as horas e minutos trabalhados e o valor total que o veterinário receberá.
     */
 
-    //ENTRADA
+    // Solicita ao veterinário as informações necessárias
+const consultasBaixa = parseInt(prompt("Quantas consultas de baixa complexidade você atende por dia?"));
+const consultasMedia = parseInt(prompt("Quantas consultas de média complexidade você atende por dia?"));
+const consultasAlta = parseInt(prompt("Quantas consultas de alta complexidade você atende por dia?"));
 
+// Define a duração dos procedimentos em minutos
+const duracaoBaixa = 15;
+const duracaoMedia = 40;
+const duracaoAlta = 75;
 
-    //PROCESSAMENTO
+// Calcula o tempo total de trabalho em minutos
+const tempoTotal = (consultasBaixa * duracaoBaixa) + (consultasMedia * duracaoMedia) + (consultasAlta * duracaoAlta);
 
-    
-    //SAÍDA
+// Calcula o valor da hora de acordo com o tempo de trabalho
+let valorHora = 50;
+if (tempoTotal > 8 * 60 && tempoTotal <= 10 * 60) {
+  valorHora = 75;
+} else if (tempoTotal > 10 * 60) {
+  valorHora = 90;
+}
+
+// Calcula as horas e minutos trabalhados
+const horasTrabalhadas = Math.floor(tempoTotal / 60);
+const minutosTrabalhados = tempoTotal % 60;
+
+// Calcula o valor total a receber
+const valorTotal = (tempoTotal / 60) * valorHora;
+
+// Formatação para exibir as horas e minutos no formato HH:MM
+const formatarTempo = (tempo) => {
+  return tempo < 10 ? "0" + tempo : tempo;
+};
+
+// Exibe os resultados
+alert("Tempo trabalhado: " + formatarTempo(horasTrabalhadas) + ":" + formatarTempo(minutosTrabalhados) +
+  "\nValor total a receber: R$ " + valorTotal.toFixed(2));
 
 
 </script>
